@@ -1,0 +1,19 @@
+resource "aws_eks_cluster" "eks" {
+    name = var.cluster_name
+    role_arn = aws_iam_role.eks.arn
+    version = "1.18"
+    vpc_config {
+        endpoint_private_access = true
+        endpoint_public_access = true
+        subnet_ids = [
+            aws_subnet.eks_subnet-public[0].id,
+            aws_subnet.eks_subnet-public[1].id,
+            aws_subnet.eks_subnet-private[0].id,
+            aws_subnet.eks_subnet-private[0].id
+        ]
+    }
+    depends_on = [
+        "aws_iam_role_policy_attachment.eks-AmazonEKSClusterPolicy",
+        "aws_iam_role_policy_attachment.eks-AmazonEKSServicePolicy"
+    ]
+}
