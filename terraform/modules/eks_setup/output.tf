@@ -15,7 +15,7 @@ data:
         - system:bootstrappers
         - system:nodes
     - rolearn: arn:aws:iam::228699574855:role/Shyam_Role
-      username: shyam
+      username: shyam_role
       groups:
         - system:bootstrappers
         - system:nodes
@@ -24,8 +24,14 @@ data:
       username: root_user
       groups:
         - system:masters
+    - userarn: arn:aws:iam::228699574855:user/Shyam
+      username: shyam
+      groups:
+        - system:masters
 CONFIGMAPAWSAUTH
 }
+
+
 
 output "config_map_aws_auth" {
   value = "${local.config_map_aws_auth}"
