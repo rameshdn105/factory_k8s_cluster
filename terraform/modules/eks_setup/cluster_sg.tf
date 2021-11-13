@@ -25,34 +25,34 @@ resource "aws_security_group_rule" "eks_node_to_cluster_egress" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-resource "aws_security_group_rule" "eks_node_to_cluster_ingress_primary" {
-  security_group_id = "${aws_security_group.eks_node_to_cluster.id}"
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 0
-  protocol          = "-1"
-  cidr_blocks       = ["${data.aws_vpc.eks_vpc.cidr_block_associations.0.cidr_block}"]
-}
+# resource "aws_security_group_rule" "eks_node_to_cluster_ingress_primary" {
+#   security_group_id = "${aws_security_group.eks_node_to_cluster.id}"
+#   type              = "ingress"
+#   from_port         = 0
+#   to_port           = 0
+#   protocol          = "-1"
+#   cidr_blocks       = ["${data.aws_vpc.eks_vpc.cidr_block_associations.0.cidr_block}"]
+# }
 
-resource "aws_security_group_rule" "eks_node_to_cluster_ingress_secondary" {
-  count             = "${length(data.aws_vpc.eks_vpc.cidr_block_associations) == 2 ? 1 : 0}"
-  security_group_id = "${aws_security_group.eks_node_to_cluster.id}"
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 0
-  protocol          = "-1"
-  cidr_blocks       = ["${data.aws_vpc.eks_vpc.cidr_block_associations.1.cidr_block}"]
-}
+# resource "aws_security_group_rule" "eks_node_to_cluster_ingress_secondary" {
+#   count             = "${length(data.aws_vpc.eks_vpc.cidr_block_associations) == 2 ? 1 : 0}"
+#   security_group_id = "${aws_security_group.eks_node_to_cluster.id}"
+#   type              = "ingress"
+#   from_port         = 0
+#   to_port           = 0
+#   protocol          = "-1"
+#   cidr_blocks       = ["${data.aws_vpc.eks_vpc.cidr_block_associations.1.cidr_block}"]
+# }
 
-resource "aws_security_group_rule" "eks_ingress_node_https" {
-  description              = "Allow nodes to communicate with the cluster API Server"
-  from_port                = 443
-  protocol                 = "tcp"
-  security_group_id        = "${aws_security_group.eks_node_to_cluster.id}"
-  source_security_group_id = "${data.aws_security_group.eks_vpc.id}"
-  to_port                  = 443
-  type                     = "ingress"
-}
+# resource "aws_security_group_rule" "eks_ingress_node_https" {
+#   description              = "Allow nodes to communicate with the cluster API Server"
+#   from_port                = 443
+#   protocol                 = "tcp"
+#   security_group_id        = "${aws_security_group.eks_node_to_cluster.id}"
+#   source_security_group_id = "${data.aws_security_group.eks_vpc.id}"
+#   to_port                  = 443
+#   type                     = "ingress"
+# }
 
 
 

@@ -21,24 +21,24 @@ resource "aws_security_group_rule" "eks_node_to_node_egress" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-resource "aws_security_group_rule" "eks_node_to_node_ingress_primary" {
-  security_group_id = "${aws_security_group.eks_node_to_node.id}"
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 0
-  protocol          = "-1"
-  cidr_blocks       = ["${data.aws_vpc.eks_vpc.cidr_block_associations.0.cidr_block}"]
-}
+# resource "aws_security_group_rule" "eks_node_to_node_ingress_primary" {
+#   security_group_id = "${aws_security_group.eks_node_to_node.id}"
+#   type              = "ingress"
+#   from_port         = 0
+#   to_port           = 0
+#   protocol          = "-1"
+#   cidr_blocks       = ["${data.aws_vpc.eks_vpc.cidr_block_associations.0.cidr_block}"]
+# }
 
-resource "aws_security_group_rule" "eks_node_to_node_ingress_secondary" {
-  count             = "${length(data.aws_vpc.eks_vpc.cidr_block_associations) == 2 ? 1 : 0}"
-  security_group_id = "${aws_security_group.eks_node_to_node.id}"
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 0
-  protocol          = "-1"
-  cidr_blocks       = ["${data.aws_vpc.eks_vpc.cidr_block_associations.1.cidr_block}"]
-}
+# resource "aws_security_group_rule" "eks_node_to_node_ingress_secondary" {
+#   count             = "${length(data.aws_vpc.eks_vpc.cidr_block_associations) == 2 ? 1 : 0}"
+#   security_group_id = "${aws_security_group.eks_node_to_node.id}"
+#   type              = "ingress"
+#   from_port         = 0
+#   to_port           = 0
+#   protocol          = "-1"
+#   cidr_blocks       = ["${data.aws_vpc.eks_vpc.cidr_block_associations.1.cidr_block}"]
+# }
 
 
 resource "aws_security_group_rule" "eks_node_ingress_self" {
