@@ -1,9 +1,9 @@
 resource "aws_s3_bucket" "s3-vpc-flow-logs" {
-  bucket = "eksfactory-vpc-flow-logs2"
+  bucket = "${terraform.workspace}_vpc-flow-logs24"
   #region = "eu-west-1"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
   lifecycle_rule {
