@@ -15,7 +15,7 @@ data:
         - system:bootstrappers
         - system:nodes
     - rolearn: arn:aws:iam::228699574855:role/Shyam_Role
-      username: system:node:{{EC2PrivateDNSName}}
+      username: shyam
       groups:
         - system:bootstrappers
         - system:nodes
