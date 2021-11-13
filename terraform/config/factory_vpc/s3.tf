@@ -2,7 +2,7 @@ resource "aws_s3_bucket" "s3-vpc-flow-logs" {
   
   ### s3 bucket name doesn't allow _ so we are using replace function to replace _ with -
   bucket = "${replace(terraform.workspace, "_", "-")}-vpc-flow-logs24"
-  region = "eu-west-1"
+  #region = "eu-west-1"
 
   lifecycle {
     prevent_destroy = false
