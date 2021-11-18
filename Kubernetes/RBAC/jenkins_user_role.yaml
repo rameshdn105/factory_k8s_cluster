@@ -33,7 +33,7 @@ roleRef:
   kind: Role
   name: eks_developer_role
 subjects:  # You can specify more than one "subject"
-  - kind: user
+  - kind: User
     name: jenkins_user
     apiGroup: rbac.authorization.k8s.io
 
