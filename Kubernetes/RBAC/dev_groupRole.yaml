@@ -28,11 +28,11 @@ kind: ClusterRoleBinding
 metadata: 
   name: dev_group_role_binding 
 roleRef:
-  apiGroup: rbac.authorization.k8s.io/v1
+  apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: dev_group_role
 subjects:  # You can specify more than one "subject"
   - kind: Group
     name: developer:devops
-    apiGroup: rbac.authorization.k8s.io/v1
+    apiGroup: rbac.authorization.k8s.io
 
