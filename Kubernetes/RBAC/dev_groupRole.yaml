@@ -1,0 +1,38 @@
+## Yaml file for creating a Role and binding it with a group
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole 
+metadata:
+  name: dev_group_role
+rules:
+  - apiGroups:
+      - ""
+      - extensions
+      - apps 
+    resources:
+      - deployments
+      - replicasets
+      - pods
+      - service
+    verbs:
+      - create
+      - get 
+      - list 
+      - update
+      - delete 
+      - watch
+      - patch
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata: 
+  name: dev_group_role_binding 
+roleRef:
+  apiGroup: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  name: dev_group_role
+subjects:  # You can specify more than one "subject"
+  - kind: Group
+    name: developer:devops
+    apiGroup: rbac.authorization.k8s.io/v1
+
