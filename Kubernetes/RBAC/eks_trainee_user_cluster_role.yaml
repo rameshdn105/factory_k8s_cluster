@@ -20,7 +20,7 @@ kind: ClusterRoleBinding
 metadata:
   name: trainee-clusterrole-binding
 subjects:  # You can specify more than one "subject"
-  - kind: user ## kind can be user or group
+  - kind: User ## kind can be user or group
     name: eks_test_trainee  ##This name must be used for binding IAM ROle with aws-auth configmap
     apiGroup: rbac.authorization.k8s.io   ## NOTE - this is apiGroup not apiGroups
 roleRef:
