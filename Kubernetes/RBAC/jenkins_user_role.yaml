@@ -29,13 +29,13 @@ metadata:
   name: jenkins_role_binding
   namespace: jenkins
 roleRef:
-  apiGroup: rbac.authorization.k8s.io/v1
+  apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: eks_developer_role
 subjects:  # You can specify more than one "subject"
   - kind: user
     name: jenkins_user
-    apiGroup: rbac.authorization.k8s.io/v1
+    apiGroup: rbac.authorization.k8s.io
 
 
 
