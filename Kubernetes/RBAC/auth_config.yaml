@@ -26,9 +26,9 @@ data:
     - userarn: arn:aws:iam::228699574855:user/Jenkins
       username: jenkins_user  
     - userarn: arn:aws:iam::228699574855:user/admin
-      username: eks_developer
-      #groups: 
-   #     - developers
+      username: admin
+      groups: 
+        - developers
       #groups:
      #   - system:masters  
     #- userarn:arn:aws:iam::228699574855:user/devGrp
