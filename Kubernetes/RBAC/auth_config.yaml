@@ -28,9 +28,8 @@ data:
     - userarn: arn:aws:iam::228699574855:user/admin
       username: super-admin
       groups:
-        - system:masters  
-    - arn:aws:iam::228699574855:user/lahari
-      username: lahari
-      groups: 
+       # - system:masters 
         - developers
+    - arn:aws:iam::228699574855:user/lahari
+      username: eks_test_trainee
     
