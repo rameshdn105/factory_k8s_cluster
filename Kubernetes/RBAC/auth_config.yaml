@@ -32,7 +32,7 @@ data:
     - userarn: arn:aws:iam::228699574855:user/admin
       username: super-admin
       groups:
-       # - system:masters 
-        - developers
+        - system:masters 
+     
   
     
