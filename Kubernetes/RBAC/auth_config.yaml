@@ -30,6 +30,5 @@ data:
       groups:
        # - system:masters 
         - developers
-    - arn:aws:iam::228699574855:user/lahari
-      username: eks_test_trainee
+  
     
