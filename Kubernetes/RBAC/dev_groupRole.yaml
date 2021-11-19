@@ -5,7 +5,7 @@ metadata:
   # "namespace" omitted since ClusterRoles are not namespaced
 rules:
   - apiGroups: [""] #indicates the core API group 
-    resources: ["nodes", "namespaces", "pods"]
+    resources: ["nodes", "pods"]
     verbs: ["get", "list"]
   - apiGroups: ["apps"]
     resources: ["deployments", "daemonsets", "statefulsets", "replicasets"]
