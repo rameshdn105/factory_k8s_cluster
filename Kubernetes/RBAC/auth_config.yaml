@@ -26,13 +26,11 @@ data:
     - userarn: arn:aws:iam::228699574855:user/Jenkins
       username: jenkins_user  
     - userarn: arn:aws:iam::228699574855:user/admin
-      username: admins
+      username: super-admin
+      groups:
+        - system:masters  
+    - userarn:arn:aws:iam::228699574855:user/devGrp
+      username: devgrp
       groups: 
         - developers
-      #groups:
-     #   - system:masters  
-    #- userarn:arn:aws:iam::228699574855:user/devGrp
-   #   username: devGrp
-   #   groups: 
-   #     - developers
-   # 
+    
