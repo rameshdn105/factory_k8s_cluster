@@ -33,6 +33,6 @@ roleRef:
   name: dev_group_role
 subjects:  # You can specify more than one "subject"
   - kind: Group
-    name: developer:devops
+    name: developers
     apiGroup: rbac.authorization.k8s.io
 
