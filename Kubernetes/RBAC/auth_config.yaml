@@ -21,4 +21,8 @@ data:
         - system:masters      
     - userarn: arn:aws:iam::228699574855:user/trainee
       username: eks_test_trainee  
+    - userarn: arn:aws:iam::228699574855:user/Dev
+      username: eks_developer 
+    - userarn: arn:aws:iam::228699574855:user/Jenkins
+      username: jenkins_user   
     
