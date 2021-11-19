@@ -32,5 +32,5 @@ data:
     - userarn:arn:aws:iam::228699574855:user/devGrp
       username: devGrp
       groups: 
-        - developer:devops
+        - developers
     
