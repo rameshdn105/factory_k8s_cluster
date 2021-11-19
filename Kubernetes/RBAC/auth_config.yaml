@@ -29,8 +29,5 @@ data:
       username: super-admin
       groups:
         - system:masters  
-    - userarn:arn:aws:iam::228699574855:user/devGrp
-      username: devgrp
-      groups: 
-        - developers
+   
     
