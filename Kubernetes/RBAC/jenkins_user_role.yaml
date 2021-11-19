@@ -3,7 +3,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role 
 metadata:
   name: jenkins-user-role
-  namespace: jenkins
+  namespace: jenkins_test
 rules:
   - apiGroups:
       - ""
@@ -27,7 +27,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding 
 metadata: 
   name: jenkins_role_binding
-  namespace: jenkins
+  namespace: jenkins_test
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
