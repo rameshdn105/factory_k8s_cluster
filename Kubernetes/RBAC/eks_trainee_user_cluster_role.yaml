@@ -5,7 +5,7 @@ metadata:
   name: trainee-clusterrole
 rules:
   - apiGroups: [""] ## apiGroups is empty for nodes, pods and NS
-    resources: ["nodes", "namespaces", "pods"]
+    resources: ["nodes", "pods"]
     verbs: ["get", "list"]
   - apiGroups: ["apps"]
     resources: ["deployments", "daemonsets", "statefulsets", "replicasets"]
