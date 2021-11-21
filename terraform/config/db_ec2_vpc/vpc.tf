@@ -22,8 +22,15 @@ resource "aws_route_table" "db_on_ec2_rt_table" {
     }
 }
 
+resource "aws_route_table" "db_on_ec2_rt_table_public" {
+    vpc_id = aws_vpc.vpc.id
+    tags = {
+        Name = "${var.vpc_name}_rt_public"
+    }
+}
+
  resource "aws_route" "route"{
-     route_table_id = aws_route_table.db_on_ec2_rt_table.id
+     route_table_id = aws_route_table.db_on_ec2_rt_table_public.id
      destination_cidr_block = "0.0.0.0/0"
      gateway_id = aws_internet_gateway.ig.id
  }
@@ -54,6 +61,10 @@ resource "aws_route_table_association" "private_rtas" {
     route_table_id = aws_route_table.db_on_ec2_rt_table.id
 }
 
+resource "aws_route_table_association" "public_rtas" {
+    subnet_id = aws_subnet.eks_subnet_public.id
+    route_table_id = aws_route_table.db_on_ec2_rt_table_public.id
+}
 
 
 
@@ -69,5 +80,13 @@ resource "aws_route" "nat_internet" {
     cidr_block = var.private_subnets_cidr
     tags = {
      Name = "ec2_db_ssubnet_private"
+}
+}
+ resource "aws_subnet" "eks_subnet_public" {
+    availability_zone = "eu-west-1a"
+    vpc_id   = aws_vpc.vpc.id
+    cidr_block = var.public_subnets_cidr
+    tags = {
+     Name = "ec2_db_ssubnet_public"
 }
 }
