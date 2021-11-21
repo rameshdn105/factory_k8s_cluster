@@ -18,3 +18,9 @@ variable "private_subnets_cidr" {
   type        = string
   default     = "10.56.24.0/22"
 }
+
+
+variable "public_subnets_cidr" {
+  type        = string
+  default     = "10.56.28.0/22"
+}
