@@ -59,7 +59,6 @@ resource "aws_route_table_association" "private_rtas" {
 
 
 resource "aws_route" "nat_internet" {
-    count = length(var.subnets)
     route_table_id = aws_route_table.db_on_ec2_rt_table.id
     destination_cidr_block = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.natgw.id
