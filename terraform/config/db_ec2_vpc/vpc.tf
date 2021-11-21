@@ -71,3 +71,4 @@ resource "aws_route" "nat_internet" {
     tags = {
      Name = "ec2_db_ssubnet_private"
 }
+}
