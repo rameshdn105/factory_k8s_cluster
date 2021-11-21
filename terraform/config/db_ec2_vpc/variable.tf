@@ -1,6 +1,6 @@
 variable "vpc_name" {
     type = string
-    default = "db_vpc_c2"
+    default = "db_vpc_ec2"
 }
 
 variable "aws_region" {
