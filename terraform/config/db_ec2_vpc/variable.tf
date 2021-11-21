@@ -3,14 +3,6 @@ variable "vpc_name" {
     default = "db_vpc_c2"
 }
 
-variable "subnets" {
-    type = list
-}
-
-variable "subnets_public" {
-    type = list
-}
-
 variable "aws_region" {
     type = string
     default = "eu-west-1"
