@@ -8,12 +8,14 @@ metadata:
   name: aws-auth
   namespace: kube-system
 data:
-  #mapRoles: |
-   # - rolearn: ${aws_iam_role.eks-node.arn}
-   #   username: system:node:{{EC2PrivateDNSName}}
-   #   groups:
-    #    - system:bootstrappers
-     #   - system:nodes
+  mapRoles: |
+    ### this line is very important 
+    ### this is used for attching nodes with the cluster
+    - rolearn: ${aws_iam_role.eks-node.arn}
+      username: system:node:{{EC2PrivateDNSName}}
+      groups:
+        - system:bootstrappers
+        - system:nodes
   mapUsers: |
     - userarn: arn:aws:iam::228699574855:root
       username: root_user
