@@ -1,5 +1,4 @@
 resource "aws_instance" "db_instance" {
-  count         = 1
   instance_type = "t2.micro"
   ami           = "ami-0943382e114f188e8"
   key_name      = "BastionKey"
