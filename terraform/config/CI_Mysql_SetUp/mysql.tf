@@ -10,6 +10,6 @@ resource "aws_instance" "db_instance" {
   }
 resource "null_resource" "example1" {
   provisioner "local-exec" {
-    command = "echo ${aws_instance.db_insatnce.public_ip} >> /ip_addr"  
+    command = "echo ${aws_instance.db_insatnce.public_ip} >> /ip_addr.txt"  
   }
 }
