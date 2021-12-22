@@ -7,7 +7,7 @@ then
     exit
 else
     echo -e "\033[92m<<<<<<<<<<<<<<<<<<<   Installing Mysql!!... >>>>>>>>>>>>>>>>>>>>>\033[0m\n\n"
-    sudo apt-get install mysql-server -y
+    sudo apt install mysql-server -y
     echo -e "\033[34m<<<<<<<<<<<<<<<<<<<  Setting Up Root USER >>>>>>>>>>>>>>>>>>>>>\033[0m\n\n"
     sudo mysql <<EOF
     ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$password';
