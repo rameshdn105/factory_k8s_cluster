@@ -1,0 +1,3 @@
+variable "dbhost" {
+  type = string
+}
