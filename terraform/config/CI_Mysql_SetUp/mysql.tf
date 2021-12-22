@@ -9,7 +9,8 @@ resource "aws_instance" "db_instance" {
    connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = file("/home/ubuntu/.ssh/BastionKey.pem")
+    #private_key = file("/home/ubuntu/.ssh/BastionKey.pem")
+    private_key = "${file("/home/ubuntu/.ssh/BastionKey.pem")}"
     host        = self.public_ip
   }
    provisioner "file" {
