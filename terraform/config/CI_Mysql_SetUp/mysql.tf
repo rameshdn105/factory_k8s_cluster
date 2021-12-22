@@ -6,7 +6,22 @@ resource "aws_instance" "db_instance" {
   subnet_id     = "subnet-d94cafa0"
   vpc_security_group_ids      = ["sg-0a44108342b2e84d6"]
   associate_public_ip_address = true
-  
+   connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = file("/home/ubuntu/.ssh/BastionKey.pem")
+    host        = self.public_ip
+  }
+   provisioner "file" {
+    source      = "install_mysql.sh"
+    destination = "/home/ubuntu/install_mysql.sh"
+  }
+   provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/ubuntu/install_mysql.sh",
+      "/home/ubuntu/install_mysql.sh ${var.dbpass}",
+    ]
+  }
   }
 resource "null_resource" "example1" {
   provisioner "local-exec" {
