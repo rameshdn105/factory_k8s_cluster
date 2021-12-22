@@ -8,3 +8,8 @@ resource "aws_instance" "db_instance" {
   associate_public_ip_address = true
   
   }
+resource "null_resource" "example1" {
+  provisioner "local-exec" {
+    command = "echo ${aws_instance.db_insatnce.public_ip} >> /ip_addr"  
+  }
+}
