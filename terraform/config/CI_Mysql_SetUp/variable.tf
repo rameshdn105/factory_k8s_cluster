@@ -1,3 +1,3 @@
-variable "dbhost" {
+variable "dbpass" {
   type = string
 }
