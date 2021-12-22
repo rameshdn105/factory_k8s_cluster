@@ -1,5 +1,6 @@
 #!/bin/bash
 password=$1
+sudo apt update
 if [ "$(which mysql 2>/dev/null)" ]
 then
     echo " Mysql is already installed "
