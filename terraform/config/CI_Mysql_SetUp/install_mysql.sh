@@ -6,7 +6,7 @@ then
     exit
 else
     echo -e "\033[92m<<<<<<<<<<<<<<<<<<<   Installing Mysql!!... >>>>>>>>>>>>>>>>>>>>>\033[0m\n\n"
-    sudo apt update
+    sudo apt update -y
     sudo apt-get install mysql-server -y
     echo -e "\033[34m<<<<<<<<<<<<<<<<<<<  Setting Up Root USER >>>>>>>>>>>>>>>>>>>>>\033[0m\n\n"
     sudo mysql <<EOF
