@@ -21,6 +21,8 @@ resource "aws_instance" "db_instance" {
   }
    provisioner "remote-exec" {
     inline = [
+      "sleep 2m",
+      "sudo apt get update",
       "chmod +x /home/ubuntu/install_mysql.sh",
       "/home/ubuntu/install_mysql.sh ${var.dbpass}",
     ]
