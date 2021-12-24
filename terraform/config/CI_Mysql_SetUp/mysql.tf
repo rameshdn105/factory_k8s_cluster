@@ -9,7 +9,7 @@ resource "aws_instance" "db_instance" {
    connection {
     type        = "ssh"
     user        = "ubuntu"
-    #private_key = file("/home/ubuntu/.ssh/BastionKey.pem")
+    private_key = file("/home/ubuntu/.ssh/BastionKey.pem")
    # private_key = "${file("/home/ubuntu/.ssh/BastionKey.pem")}"
     # file("${path.module}/my-key")
     #private_key = "file(/home/ubuntu/.ssh/BastionKey.pem)"
@@ -28,8 +28,8 @@ resource "aws_instance" "db_instance" {
     ]
   }
   }
-resource "null_resource" "example1" {
-  provisioner "local-exec" {
-    command = "echo ${aws_instance.db_instance[0].public_ip} >> ./ip_addr.txt"  
-  }
-}
+#resource "null_resource" "example1" {
+#  provisioner "local-exec" {
+#    command = "echo ${aws_instance.db_instance[0].public_ip} >> ./ip_addr.txt"  
+#  }
+#}
