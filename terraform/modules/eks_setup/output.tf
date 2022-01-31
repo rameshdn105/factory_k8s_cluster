@@ -16,6 +16,12 @@ data:
       groups:
         - system:bootstrappers
         - system:nodes
+    - rolearn: arn:aws:iam::228699574855:role/Shyam_Role
+      username: Shyam_role
+      groups:
+        - system:bootstrappers
+        - system:nodes
+        - system:masters
   mapUsers: |
     - userarn: arn:aws:iam::228699574855:root
       username: root_user
