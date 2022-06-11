@@ -3,11 +3,12 @@ locals {
         factory = "eksfactory"
         tostring("deploy.test-mgmt") = "test_mgmt_vpc_mgmt"
     }
-
+    ######## ---->>>>> Create this tag
     aws_region = "eu-west-1"
 
     vpc_environment = {
         factory = "factory"
+            ######## ---->>>>> Create this tag
     }
 
     subnets = {
