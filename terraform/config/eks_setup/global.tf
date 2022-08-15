@@ -1,13 +1,13 @@
 locals {
     vpc_name = {
-        factory = "eksfactory"
+        dev = "dev"
         tostring("deploy.test-mgmt") = "test_mgmt_vpc_mgmt"
     }
 
     aws_region = "eu-west-1"
 
     vpc_environment = {
-        factory = "factory"
+        dev = "dev"
     }
 
     subnets = {
