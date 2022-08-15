@@ -3,16 +3,22 @@ locals {
         factory = "eksfactory"
         tostring("deploy.test-mgmt") = "test_mgmt_vpc_mgmt"
     }
+    
+    vpc_cidr = {
+        dev = "10.55.0.0"
+        preprod = "10.45.0.0"
+        prod = "10.35.0.0"
+    }
     ######## ---->>>>> Create this tag
     aws_region = "eu-west-1"
 
     vpc_environment = {
-        factory = "factory"
+        dev = "factory"
             ######## ---->>>>> Create this tag
     }
 
     subnets = {
-        factory = [
+        dev = [
             {
                 availability_zone = "a"
                 cidr_block = "10.55.24.0/22"
@@ -28,7 +34,7 @@ locals {
         ]
     }
     subnets_public = {
-        factory = [
+        dev = [
             {
                 availability_zone = "a"
                 cidr_block = "10.55.40.0/22"
