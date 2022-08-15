@@ -11,7 +11,7 @@ variable "aws_region" {
 
 variable "vpc_cidr_block" {
   type        = string
-  default     = "10.55.0.0/16"
+  default     = ""
 }
 
 variable "vpc_name" {
@@ -19,7 +19,26 @@ variable "vpc_name" {
   default     = "dev"
 }
 
-variable vpc_environment {
+variable "vpc_environment" {
   type        = string
   default     = "dev"
+}
+
+variable "pubcidr1" {
+  type        = string
+  default     = ""
+}
+variable "pubcidr2" {
+  type        = string
+  default     = ""
+}
+
+variable "pricidr1" {
+  type        = string
+  default     = ""
+}
+
+variable "pricidr2" {
+  type        = string
+  default     = ""
 }
