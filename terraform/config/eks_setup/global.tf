@@ -2,16 +2,18 @@ locals {
     vpc_name = {
         dev = "dev"
         tostring("deploy.test-mgmt") = "test_mgmt_vpc_mgmt"
+        prod = "prod"
     }
 
     aws_region = "eu-west-1"
 
     vpc_environment = {
         dev = "dev"
+        prod = "prod"
     }
 
     subnets = {
-        factory = [
+        dev = [
             {
                 availability_zone = "a"
                 cidr_block = "10.55.24.0/22"
@@ -27,7 +29,7 @@ locals {
         ]
     }
     subnets_public = {
-        factory = [
+        dev = [
             {
                 availability_zone = "a"
                 cidr_block = "10.55.40.0/22"
