@@ -7,6 +7,7 @@ locals {
 
     aws_region = "eu-west-1"
 
+
     vpc_environment = {
         dev = "dev"
         prod = "prod"

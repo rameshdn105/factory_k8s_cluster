@@ -4,4 +4,5 @@ module "eks_setup" {
     subnets = local.subnets[terraform.workspace]
     cluster_name = "${terraform.workspace}"
     subnets_public = local.subnets_public[terraform.workspace]
+    key_name = local.access_key[terraform.workspace]
 }

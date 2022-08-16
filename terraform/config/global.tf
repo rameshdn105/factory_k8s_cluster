@@ -12,6 +12,11 @@ locals {
     ######## ---->>>>> Create this tag
     aws_region = "eu-west-1"
 
+    access_key = {
+        dev = "devkey"
+        prod = "prodkey"
+    }
+
     vpc_environment = {
         dev = "factory"
             ######## ---->>>>> Create this tag
