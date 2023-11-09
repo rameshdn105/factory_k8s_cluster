@@ -24,6 +24,6 @@ execute awscli script
 execute kubectl script -> then run source ~/.bash_profile
 ##################################
 ----> Infra creation
-create a terraform workspace - dev -> then terraform apply VPC script(terraform/config/vpc)
+create a terraform workspace - dev -> then terraform apply VPC script(terraform/config/eks_vpc)
 create a terraform workspace - dev -> terraform apply k8s script 
 
