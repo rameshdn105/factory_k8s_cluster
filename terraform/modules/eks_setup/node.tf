@@ -19,30 +19,55 @@ set -o xtrace
 USERDATA
 }
 
-resource "aws_launch_configuration" "eks" {
-  associate_public_ip_address = true
-  iam_instance_profile        = "${aws_iam_instance_profile.eks_node.name}"
-  image_id                    = "ami-002595b7394a41704"
-  #########>>>>>>>>>>>>>  Change the ami according to k8s version changes 
-  instance_type               = "${var.node_size}"
-  name_prefix                 = "eks-${var.cluster_name}"
-  security_groups             = "${list(aws_security_group.eks_node_to_node.id)}"
-  user_data_base64            = "${base64encode(local.eks_node_userdata)}"
-  key_name                    = "${var.key_name}"
+resource "aws_launch_template" "eks" {
+  name                 = "eks-${var.cluster_name}"
+ 
 
-  lifecycle {
-    create_before_destroy = true
+  block_device_mappings {
+    device_name = "/dev/xvda"
+    ebs {
+      volume_size = 20  # Adjust the volume size as needed
+    }
+  }
+
+  capacity_reservation_specification {
+    capacity_reservation_preference = "open"  # Adjust as needed
+  }
+
+  credit_specification {
+    cpu_credits = "standard"  # or "unlimited" if needed
+  }
+
+  iam_instance_profile {
+    name = aws_iam_instance_profile.eks_node.name
+  }
+
+  image_id                 = "ami-097d3a13fdfb09b93"  # Change the AMI according to Kubernetes version changes
+  instance_type            = var.node_size
+  key_name                 = var.key_name
+  vpc_security_group_ids   = aws_security_group.eks_node_to_node[*].id
+  user_data                = base64encode(local.eks_node_userdata)
+
+  tag_specifications {
+    resource_type = "instance"
+    tags = {
+      Name        = "eks-${var.cluster_name}"
+      Environment = "production"  # Adjust as needed
+    }
   }
 }
 
+
 resource "aws_autoscaling_group" "eks" {
   count                = "${length(var.subnets)}"
-  launch_configuration = "${aws_launch_configuration.eks.id}"
   max_size             = "${var.max_size}"
   min_size             = "${var.min_size}"
   name                 = "eks-${var.cluster_name}-${element(aws_subnet.eks_subnet-private.*.availability_zone, count.index)}"
   vpc_zone_identifier  = ["${element(aws_subnet.eks_subnet-private.*.id, count.index)}"]
   termination_policies = ["NewestInstance", "OldestLaunchConfiguration"]
+  launch_template {
+    id      = aws_launch_template.eks.id
+  }
 
   tag {
     key                 = "Name"
