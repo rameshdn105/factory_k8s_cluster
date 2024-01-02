@@ -44,6 +44,7 @@ resource "aws_launch_template" "eks" {
 
   image_id                 = "ami-097d3a13fdfb09b93"  # Change the AMI according to Kubernetes version changes 
   # find the ami id for your cluster version from here - https://github.com/awslabs/amazon-eks-ami/blob/master/CHANGELOG.md 
+  # select the image for - amazon-eks-node
   instance_type            = var.node_size
   key_name                 = var.key_name
   vpc_security_group_ids   = aws_security_group.eks_node_to_node[*].id
